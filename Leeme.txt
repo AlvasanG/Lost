@@ -1,0 +1,7 @@
+Autor: Germán Iglesias Ramos UO202549
+
+Ejemplo de cómo añadir sonido vía scripts, al hacer click en una de las dos teclas que 
+tenemos asignadas y configuradas en mi código suena un disparo o un coinMario.
+
+El tutorial que se ha seguido es el siguiente: https://www.youtube.com/watch?v=PgFgsiWHqg4
+
