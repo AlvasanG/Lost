@@ -2099,6 +2099,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sandbags
       objectReference: {fileID: 0}
+    - target: {fileID: 1000013408446254, guid: 7889b3e42b29881408a396ea8303773f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4000012379405242, guid: 7889b3e42b29881408a396ea8303773f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 18.683044
@@ -2154,6 +2158,21 @@ PrefabInstance:
     - target: {fileID: 4000012379405242, guid: 7889b3e42b29881408a396ea8303773f, type: 3}
       propertyPath: m_LocalScale.z
       value: 1.3536999
+      objectReference: {fileID: 0}
+    - target: {fileID: 23000013240250916, guid: 7889b3e42b29881408a396ea8303773f,
+        type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 23000013240250916, guid: 7889b3e42b29881408a396ea8303773f,
+        type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 23000013240250916, guid: 7889b3e42b29881408a396ea8303773f,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7889b3e42b29881408a396ea8303773f, type: 3}
