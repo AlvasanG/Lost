@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 4858068235092434014}
   - component: {fileID: 4858068235094336426}
   - component: {fileID: 4858068235094336427}
+  - component: {fileID: 3873319982010297426}
   m_Layer: 0
-  m_Name: at_mine_LOD1 1
-  m_TagString: Player
+  m_Name: MineWithExplosion
+  m_TagString: Mine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110,8 +111,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionEffect: {fileID: 6911973971531415861}
+  mine: {fileID: 4858068235094511718}
   radius: 10
   explosionForce: 10
+--- !u!114 &3873319982010297426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4858068235094511718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cebbb114849a9544b9b24816d037f306, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  size: 5
+  desiredHeight: 3
 --- !u!1001 &7937809702962188503
 PrefabInstance:
   m_ObjectHideFlags: 0
