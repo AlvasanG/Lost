@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using System.Collections;
 
 namespace ObjectCode
 {
@@ -11,6 +12,7 @@ namespace ObjectCode
 
         public float radius = 10f;
         public float explosionForce = 10f;
+        public float explosionDepth = 3f; // Altura del terreno debajo de la mina despues de que estalle (la playa es altura 5)
 
         private ObjectCode.TerrainFormer tFormer;
 
@@ -21,7 +23,6 @@ namespace ObjectCode
         private void OnTriggerEnter(Collider other) {
             
             if(other.tag == "Player"){
-                explosionEffect.SetActive(true);
                 Explode();      
             }
 
@@ -34,7 +35,7 @@ namespace ObjectCode
                 Rigidbody rig = col.GetComponent<Rigidbody>();
                 if(rig != null){
                     // Realizar cualquier accion contra el jugador (col)
-                    tFormer.UpdateHeightTerrain();
+                    tFormer.SetDesiredHeight(explosionDepth);
                 }
             }
 
