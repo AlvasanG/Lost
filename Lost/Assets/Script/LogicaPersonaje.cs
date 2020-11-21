@@ -48,6 +48,7 @@ public class LogicaPersonaje : MonoBehaviour
         anim.SetFloat("VelX", x);
         anim.SetFloat("VelY", y);
 
+        //Sonidos del personaje al correr
         if(Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.LeftArrow)
          || Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.DownArrow) ||
          Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.LeftArrow)
@@ -63,6 +64,7 @@ public class LogicaPersonaje : MonoBehaviour
             {
                 anim.SetBool("salto", true);
                 rb.AddForce(new Vector3(0, fuerzadeSalto, 0), ForceMode.Impulse);
+                // Sonido al saltar
                 sonido.clip = saltar;
                 sonido.Play();
 
