@@ -7,6 +7,7 @@ TagManager:
   - Fire
   - Mine
   - MinePlane
+  - terrain
   layers:
   - Default
   - TransparentFX
