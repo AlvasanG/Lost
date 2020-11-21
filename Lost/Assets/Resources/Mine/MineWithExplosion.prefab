@@ -113,6 +113,7 @@ MonoBehaviour:
   mine: {fileID: 4858068235094511718}
   radius: 10
   explosionForce: 10
+  explosionDepth: 3
 --- !u!1001 &7937809702962188503
 PrefabInstance:
   m_ObjectHideFlags: 0

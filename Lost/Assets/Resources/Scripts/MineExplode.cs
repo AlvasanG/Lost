@@ -7,6 +7,7 @@ namespace ObjectCode
         
     public class MineExplode : MonoBehaviour
     {
+
         public GameObject explosionEffect;
         public GameObject mine;
 
@@ -18,6 +19,7 @@ namespace ObjectCode
 
         private void Start() {
             tFormer = mine.AddComponent<ObjectCode.TerrainFormer>();
+
         }
 
         private void OnTriggerEnter(Collider other) {
@@ -38,7 +40,6 @@ namespace ObjectCode
                     tFormer.SetDesiredHeight(explosionDepth);
                 }
             }
-
             GameObject clone = Instantiate(explosionEffect, transform.position, transform.rotation);
             ParticleSystem.MainModule particle = clone.GetComponent<ParticleSystem>().main;
             Destroy(clone, particle.duration);

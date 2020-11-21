@@ -5,6 +5,7 @@ using UnityEngine;
 public class LogicaPies : MonoBehaviour
 {
     public LogicaPersonaje logicaPersonaje;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +18,8 @@ public class LogicaPies : MonoBehaviour
     {
       
     }
+
+    
 
     private void OnTriggerStay() 
     {
