@@ -5,19 +5,23 @@ using UnityEngine;
 public class LogicaPies : MonoBehaviour
 {
     public LogicaPersonaje logicaPersonaje;
+    public AudioClip sonido;
+    private AudioSource audio;
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        audio = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
-    void Update()
+// Cuando detecte una mna reproduzca el sonido de una mina accionada
+    private void OnTriggerEnter(Collider other)
     {
-      
+        if(other.CompareTag("Mine")){
+            audio.PlayOneShot(sonido, 1);
+        }
     }
-
     private void OnTriggerStay() 
     {
         logicaPersonaje.puedoSaltar = true;    
