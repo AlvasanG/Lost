@@ -8,6 +8,7 @@ TagManager:
   - Mine
   - MinePlane
   - terrain
+  - objetivo
   layers:
   - Default
   - TransparentFX

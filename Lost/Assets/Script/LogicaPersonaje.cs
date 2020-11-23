@@ -21,6 +21,8 @@ public class LogicaPersonaje : MonoBehaviour
     public float velocidadInicial; // guarda la v de movimiento
     public float velocidadAgachado;
 
+    //public int nivel;
+
     // Start is called before the first frame update
     void Start()
     {
