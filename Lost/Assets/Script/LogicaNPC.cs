@@ -20,6 +20,9 @@ public class LogicaNPC : MonoBehaviour
     public int numDeObjetivos; // cuantos hay
     public GameObject botonDeMision; // cuando ya acabamos la msision
 
+    public AudioSource audioSource;
+    public AudioClip audioClipSaludo;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -59,6 +62,7 @@ public class LogicaNPC : MonoBehaviour
         // si el el player
         if(other.tag == "Player")
         {
+            audioSource.PlayOneShot(audioClipSaludo);
             jugadorCerca = true; // el jugador esta cerca
             if(aceptarMision == false) // si aun no ha aceptado mision
             {

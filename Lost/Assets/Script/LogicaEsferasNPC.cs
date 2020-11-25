@@ -5,6 +5,11 @@ using UnityEngine;
 public class LogicaEsferasNPC : MonoBehaviour
 {
     public LogicaNPC logicaNPC; // nombre de logicaNPC
+    public AudioSource audioSource;
+    public AudioClip audioClipEsferas;
+    public AudioClip audioClipFin;
+    //public LogicaPersonaje logicaPersonaje;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,10 +31,14 @@ public class LogicaEsferasNPC : MonoBehaviour
             logicaNPC.numDeObjetivos--;
             logicaNPC.textoMision.text = "Obtén las esferas amarillas" + 
             "\n Restantes: " + logicaNPC.numDeObjetivos;
+            audioSource.PlayOneShot(audioClipEsferas);
             if(logicaNPC.numDeObjetivos <= 0)
             {
-                logicaNPC.textoMision.text = "Completaste la misión";
+                logicaNPC.textoMision.text = "¡Completaste la misión!, ve a la zona de las trincheras";
                 logicaNPC.botonDeMision.SetActive(true);
+                audioSource.PlayOneShot(audioClipFin);
+                //logicaPersonaje.transform.position = new Vector3(590.45f,5.577601f,614.01f);
+
             }
             //desactivamos el objeto padre por si queremos seguir utilizandolo en otras misiones
             transform.parent.gameObject.SetActive(false);

@@ -36,7 +36,7 @@ public class LogicaObjetivosEsferas : MonoBehaviour
             // si no quedan objetivos
             if(numeroDeObjetivos<=0){
                 //logicaPersonaje.nivel++;
-                textoMision.text = "Completaste la misión";
+                textoMision.text = "Completaste la misión, ve a la zona de trincheras";
                 botonDeMision.SetActive(true);
             }
         }
