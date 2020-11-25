@@ -1048,8 +1048,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 822559666}
-  m_Father: {fileID: 0}
-  m_RootOrder: 29
+  m_Father: {fileID: 1237962873}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &124373457
 Animator:
@@ -1683,7 +1683,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &221639047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2710,6 +2710,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   logicaNPC: {fileID: 8296172668771324190}
+  audioSource: {fileID: 1865599884}
+  audioClipEsferas: {fileID: 8300000, guid: 1b13957acf0c36f4682da179dea972a9, type: 3}
+  audioClipFin: {fileID: 8300000, guid: 7e6c987efea1cb547accc74b93cc9ed6, type: 3}
 --- !u!4 &347772498 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000012379405242, guid: 7889b3e42b29881408a396ea8303773f,
@@ -5754,6 +5757,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   logicaNPC: {fileID: 8296172668771324190}
+  audioSource: {fileID: 1865599884}
+  audioClipEsferas: {fileID: 8300000, guid: 1b13957acf0c36f4682da179dea972a9, type: 3}
+  audioClipFin: {fileID: 8300000, guid: 7e6c987efea1cb547accc74b93cc9ed6, type: 3}
 --- !u!4 &837775273 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000012379405242, guid: 7889b3e42b29881408a396ea8303773f,
@@ -7286,8 +7292,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 337381656}
-  m_Father: {fileID: 0}
-  m_RootOrder: 28
+  m_Father: {fileID: 1237962873}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1009855074
 Animator:
@@ -9195,6 +9201,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aea52f5da97018c4aaecffcdfa9035d8, type: 3}
+--- !u!1 &1237962872
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1237962873}
+  m_Layer: 0
+  m_Name: ObjetivosNPC
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1237962873
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237962872}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1009855073}
+  - {fileID: 124373456}
+  m_Father: {fileID: 0}
+  m_RootOrder: 29
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1242143538
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9433,7 +9471,7 @@ GameObject:
   - component: {fileID: 1269616820}
   - component: {fileID: 1269616819}
   m_Layer: 5
-  m_Name: Canvas (1)
+  m_Name: Canvas NPC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9512,7 +9550,7 @@ RectTransform:
   m_Children:
   - {fileID: 1941564006}
   m_Father: {fileID: 0}
-  m_RootOrder: 30
+  m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -10881,7 +10919,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1467223928
 Transform:
   m_ObjectHideFlags: 0
@@ -13543,6 +13581,12 @@ Transform:
 --- !u!1 &1865599882 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1448653032096946312, guid: 02b21b1ca90ec2145a38e4ac267002b7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1791253495481189349}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1865599884 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1791253494284583700, guid: 02b21b1ca90ec2145a38e4ac267002b7,
     type: 3}
   m_PrefabInstance: {fileID: 1791253495481189349}
   m_PrefabAsset: {fileID: 0}
@@ -19558,6 +19602,8 @@ MonoBehaviour:
   - {fileID: 1009855072}
   numDeObjetivos: 0
   botonDeMision: {fileID: 1821579543}
+  audioSource: {fileID: 1865599884}
+  audioClipSaludo: {fileID: 8300000, guid: dfce274994435c2419d2e08561118b75, type: 3}
 --- !u!136 &8296172668771324191
 CapsuleCollider:
   m_ObjectHideFlags: 0
