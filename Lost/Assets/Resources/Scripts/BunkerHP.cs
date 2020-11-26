@@ -7,6 +7,7 @@ public class BunkerHP : MonoBehaviour
 {
     public float health;
     public float maxHealth;
+    public float numberOfHits = 3;
 
 
     public GameObject healthBarUI;
@@ -38,8 +39,9 @@ public class BunkerHP : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other){
-        if(other.tag == "grenade"){
-            health -= (health/3);
+        if(other.tag == "Grenade"){
+            health -= (maxHealth/numberOfHits);
+            other.gameObject.GetComponent<GrenadeScript>().Explode();
         }
     }
 }

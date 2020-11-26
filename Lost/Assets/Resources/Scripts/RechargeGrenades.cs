@@ -11,7 +11,6 @@ public class RechargeGrenades : MonoBehaviour
 
     void Start(){
         player = GameObject.FindWithTag("Player");
-        Debug.Log(player);
     }
 
     void Update(){
@@ -22,7 +21,6 @@ public class RechargeGrenades : MonoBehaviour
 
     void OnTriggerEnter(Collider other){
         if(other.tag == "Player" && nGrenades > 0){
-            Debug.Log("Recharge grenades");
             player.GetComponent<LogicaPersonaje>().nGranadas += givenGrenadesPerTake;
             nGrenades -= givenGrenadesPerTake;
         }

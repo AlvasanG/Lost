@@ -24,8 +24,14 @@ public class LogicaPersonaje : MonoBehaviour
     public int nGranadas;
     private bool lanzandoGranada;
     public float granadaCD = 2f;
+    public GameObject granada;
+    public float throwStrength;
 
     private float timeStamp;
+    private Transform handCoord;
+
+
+    public float angle = 0.3f;
 
     //public int nivel;
 
@@ -38,6 +44,11 @@ public class LogicaPersonaje : MonoBehaviour
         velocidadAgachado = velocidadMovimiento * 0.5f;
         sonido = GetComponent<AudioSource>();
         lanzandoGranada = false;
+
+        
+        handCoord = transform.Find("mixamorig:Hips").transform.Find("mixamorig:Spine").transform.Find("mixamorig:Spine1")
+        .transform.Find("mixamorig:Spine2").transform.Find("mixamorig:RightShoulder").transform.Find("mixamorig:RightArm")
+        .transform.Find("mixamorig:RightForeArm").transform.Find("mixamorig:RightHand");
     }
 
     // Estandar de reproduccion
@@ -116,7 +127,13 @@ public class LogicaPersonaje : MonoBehaviour
         lanzandoGranada = true;
         if(nGranadas > 0){
             nGranadas--;
-            Debug.Log("Granada lanzada");
+
+            //hand position
+            Vector3 pos = new Vector3(handCoord.position.x,handCoord.position.y,handCoord.position.z);
+            Vector3 v = new Vector3(this.transform.forward.x, angle, this.transform.forward.z);
+            Vector3 force = throwStrength * v;
+            GameObject g = Instantiate(granada, pos, Quaternion.identity);
+            g.GetComponent<Rigidbody>().AddForce(force,ForceMode.Impulse);
         } else {
             Debug.Log("No tenemos granadas");
         }

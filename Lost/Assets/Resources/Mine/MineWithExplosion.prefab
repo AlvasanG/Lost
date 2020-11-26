@@ -109,7 +109,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c93cf0fee897cb541a33425dce0c9d53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionEffect: {fileID: 6911973971531415861}
+  explosionEffect: {fileID: 3586132399845904866, guid: 1366beb2be048034c8b908433d4996f1,
+    type: 3}
   mine: {fileID: 4858068235094511718}
   radius: 10
   explosionForce: 10
@@ -188,12 +189,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1366beb2be048034c8b908433d4996f1, type: 3}
---- !u!1 &6911973971531415861 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3586132399845904866, guid: 1366beb2be048034c8b908433d4996f1,
-    type: 3}
-  m_PrefabInstance: {fileID: 7937809702962188503}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6908812827826183191 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3587622293385776320, guid: 1366beb2be048034c8b908433d4996f1,

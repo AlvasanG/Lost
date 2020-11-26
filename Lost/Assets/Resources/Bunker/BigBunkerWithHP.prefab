@@ -238,7 +238,7 @@ GameObject:
   - component: {fileID: 4990199719684967789}
   m_Layer: 0
   m_Name: BigBunkerWithHP
-  m_TagString: Untagged
+  m_TagString: Bunker
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -314,10 +314,10 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4990199720311140723}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 44aa659a2015b484bb562dd86e9aab26, type: 3}
 --- !u!114 &4990199719684967789
@@ -334,6 +334,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 300
   maxHealth: 300
+  numberOfHits: 4
   healthBarUI: {fileID: 4990199719078863620}
   hpBar: {fileID: 4990199720592761525}
 --- !u!1 &4990199720545487122
