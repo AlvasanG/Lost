@@ -11,7 +11,7 @@ public class LogicaPersonaje : MonoBehaviour
     public AudioClip saltar;
     public AudioClip paso;
 
-    private Animator anim;
+    public Animator anim;
     private float x,y;
 
     public Rigidbody rb;
