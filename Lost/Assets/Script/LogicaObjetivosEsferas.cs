@@ -17,6 +17,7 @@ public class LogicaObjetivosEsferas : MonoBehaviour
         // en un inicio busque los objetivos // length los cuentas
         numeroDeObjetivos = GameObject.FindGameObjectsWithTag("objetivo").Length;
         textoMision.text = "Obtén las esferas amarillas" + "\n Restantes: " + numeroDeObjetivos;
+        //panel.SetActive(true);
     }
 
     // Update is called once per frame
@@ -39,6 +40,7 @@ public class LogicaObjetivosEsferas : MonoBehaviour
                 textoMision.text = "Completaste la misión";
                 botonDeMision.SetActive(true);
             }
+            
         }
     }
 }

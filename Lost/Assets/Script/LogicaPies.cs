@@ -24,7 +24,10 @@ public class LogicaPies : MonoBehaviour
     }
     private void OnTriggerStay() 
     {
-        logicaPersonaje.puedoSaltar = true;    
+        //if(other.tag == "terrain"){
+            logicaPersonaje.puedoSaltar = true; 
+        //}
+           
     }
 
     private void OnTriggerExit() 
