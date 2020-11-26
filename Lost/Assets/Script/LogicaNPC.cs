@@ -50,7 +50,8 @@ public class LogicaNPC : MonoBehaviour
             jugador.anim.SetFloat("VelX", 0);
             jugador.anim.SetFloat("VelY", 0);
             // Deshabilitar el codigo
-            jugador.enabled = false; //No usar para que el jugador tenga libertad
+            //No usar para que el jugador tenga libertad
+            jugador.enabled = false;
             // desactiva el presionar X
             panelNPC.SetActive(false);
             panelNPC2.SetActive(true);
@@ -89,7 +90,8 @@ public class LogicaNPC : MonoBehaviour
     // si da no, desactiva todo
     public void No()
     {
-        jugador.enabled = true; //No usar para que el jugador tenga libertad
+        //No usar para que el jugador tenga libertad
+        jugador.enabled = true;
         panelNPC2.SetActive(false);
         panelNPC.SetActive(true);
 
@@ -97,7 +99,8 @@ public class LogicaNPC : MonoBehaviour
     // si le damos a SI
     public void Si()
     {
-        jugador.enabled = true; //No usar para que el jugador tenga libertad
+         //No usar para que el jugador tenga libertad
+        jugador.enabled = true;
         aceptarMision = true;
         //Recorremos el arreglo de objetivos
         for ( int i = 0; i < objetivos.Length ; i++)
