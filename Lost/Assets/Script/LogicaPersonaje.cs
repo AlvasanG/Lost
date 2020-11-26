@@ -135,7 +135,7 @@ public class LogicaPersonaje : MonoBehaviour
             GameObject g = Instantiate(granada, pos, Quaternion.identity);
             g.GetComponent<Rigidbody>().AddForce(force,ForceMode.Impulse);
         } else {
-            Debug.Log("No tenemos granadas");
+            //Debug.Log("No tenemos granadas");
         }
     }
 }
