@@ -21,6 +21,18 @@ public class LogicaPersonaje : MonoBehaviour
     public float velocidadInicial; // guarda la v de movimiento
     public float velocidadAgachado;
 
+    public int nGranadas;
+    private bool lanzandoGranada;
+    public float granadaCD = 2f;
+    public GameObject granada;
+    public float throwStrength;
+
+    private float timeStamp;
+    private Transform handCoord;
+
+
+    public float angle = 0.3f;
+
     //public int nivel;
 
     // Start is called before the first frame update
@@ -31,6 +43,12 @@ public class LogicaPersonaje : MonoBehaviour
         velocidadInicial = velocidadMovimiento;
         velocidadAgachado = velocidadMovimiento * 0.5f;
         sonido = GetComponent<AudioSource>();
+        lanzandoGranada = false;
+
+        
+        handCoord = transform.Find("mixamorig:Hips").transform.Find("mixamorig:Spine").transform.Find("mixamorig:Spine1")
+        .transform.Find("mixamorig:Spine2").transform.Find("mixamorig:RightShoulder").transform.Find("mixamorig:RightArm")
+        .transform.Find("mixamorig:RightForeArm").transform.Find("mixamorig:RightHand");
     }
 
     // Estandar de reproduccion
@@ -58,6 +76,15 @@ public class LogicaPersonaje : MonoBehaviour
         {
             sonido.clip = paso;
             sonido.Play();
+        }
+
+        if(timeStamp <= Time.time){
+            lanzandoGranada = false;
+        }
+
+        if(Input.GetKey("e") && !lanzandoGranada){
+            timeStamp = Time.time + granadaCD;
+            LanzarGranada();
         }
 
         if(puedoSaltar == true) // Si puedo saltar
@@ -94,5 +121,21 @@ public class LogicaPersonaje : MonoBehaviour
     public void EstoyCayendo(){
         anim.SetBool("tocoSuelo", false);
         anim.SetBool("salto", false);
+    }
+
+    private void LanzarGranada(){
+        lanzandoGranada = true;
+        if(nGranadas > 0){
+            nGranadas--;
+
+            //hand position
+            Vector3 pos = new Vector3(handCoord.position.x,handCoord.position.y,handCoord.position.z);
+            Vector3 v = new Vector3(this.transform.forward.x, angle, this.transform.forward.z);
+            Vector3 force = throwStrength * v;
+            GameObject g = Instantiate(granada, pos, Quaternion.identity);
+            g.GetComponent<Rigidbody>().AddForce(force,ForceMode.Impulse);
+        } else {
+            //Debug.Log("No tenemos granadas");
+        }
     }
 }
