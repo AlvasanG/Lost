@@ -21,6 +21,12 @@ public class LogicaPersonaje : MonoBehaviour
     public float velocidadInicial; // guarda la v de movimiento
     public float velocidadAgachado;
 
+    public int nGranadas;
+    private bool lanzandoGranada;
+    public float granadaCD = 2f;
+
+    private float timeStamp;
+
     //public int nivel;
 
     // Start is called before the first frame update
@@ -31,6 +37,7 @@ public class LogicaPersonaje : MonoBehaviour
         velocidadInicial = velocidadMovimiento;
         velocidadAgachado = velocidadMovimiento * 0.5f;
         sonido = GetComponent<AudioSource>();
+        lanzandoGranada = false;
     }
 
     // Estandar de reproduccion
@@ -58,6 +65,15 @@ public class LogicaPersonaje : MonoBehaviour
         {
             sonido.clip = paso;
             sonido.Play();
+        }
+
+        if(timeStamp <= Time.time){
+            lanzandoGranada = false;
+        }
+
+        if(Input.GetKey("e") && !lanzandoGranada){
+            timeStamp = Time.time + granadaCD;
+            LanzarGranada();
         }
 
         if(puedoSaltar == true) // Si puedo saltar
@@ -94,5 +110,15 @@ public class LogicaPersonaje : MonoBehaviour
     public void EstoyCayendo(){
         anim.SetBool("tocoSuelo", false);
         anim.SetBool("salto", false);
+    }
+
+    private void LanzarGranada(){
+        lanzandoGranada = true;
+        if(nGranadas > 0){
+            nGranadas--;
+            Debug.Log("Granada lanzada");
+        } else {
+            Debug.Log("No tenemos granadas");
+        }
     }
 }

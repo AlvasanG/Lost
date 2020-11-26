@@ -9,6 +9,7 @@ TagManager:
   - MinePlane
   - terrain
   - objetivo
+  - Grenade
   layers:
   - Default
   - TransparentFX
