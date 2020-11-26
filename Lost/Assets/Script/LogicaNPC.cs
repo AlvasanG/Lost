@@ -33,6 +33,7 @@ public class LogicaNPC : MonoBehaviour
         jugador = GameObject.FindGameObjectWithTag("Player").GetComponent<LogicaPersonaje>();
         simboloMision.SetActive(true);
         panelNPC.SetActive(false);
+        aceptarMision = false;
         
     }
 
@@ -49,6 +50,7 @@ public class LogicaNPC : MonoBehaviour
             jugador.anim.SetFloat("VelX", 0);
             jugador.anim.SetFloat("VelY", 0);
             // Deshabilitar el codigo
+            //No usar para que el jugador tenga libertad
             jugador.enabled = false;
             // desactiva el presionar X
             panelNPC.SetActive(false);
@@ -88,6 +90,7 @@ public class LogicaNPC : MonoBehaviour
     // si da no, desactiva todo
     public void No()
     {
+        //No usar para que el jugador tenga libertad
         jugador.enabled = true;
         panelNPC2.SetActive(false);
         panelNPC.SetActive(true);
@@ -96,6 +99,7 @@ public class LogicaNPC : MonoBehaviour
     // si le damos a SI
     public void Si()
     {
+         //No usar para que el jugador tenga libertad
         jugador.enabled = true;
         aceptarMision = true;
         //Recorremos el arreglo de objetivos
