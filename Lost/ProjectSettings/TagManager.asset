@@ -12,6 +12,8 @@ TagManager:
   - Grenade
   - Bunker
   - GrenadeLauncher
+  - NPC
+  - Menu
   layers:
   - Default
   - TransparentFX

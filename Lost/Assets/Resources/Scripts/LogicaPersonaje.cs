@@ -12,7 +12,7 @@ public class LogicaPersonaje : MonoBehaviour
     public AudioClip paso;
 
     public Animator anim;
-    private float x,y;
+    private float xAxis,yAxis;
 
     public Rigidbody rb;
     public float fuerzadeSalto = 8f;
@@ -46,27 +46,33 @@ public class LogicaPersonaje : MonoBehaviour
         lanzandoGranada = false;
 
         
-        handCoord = transform.Find("mixamorig:Hips").transform.Find("mixamorig:Spine").transform.Find("mixamorig:Spine1")
+        handCoord = transform.Find("mixamorig:Hips");/*.transform.Find("mixamorig:Spine").transform.Find("mixamorig:Spine1")
         .transform.Find("mixamorig:Spine2").transform.Find("mixamorig:RightShoulder").transform.Find("mixamorig:RightArm")
-        .transform.Find("mixamorig:RightForeArm").transform.Find("mixamorig:RightHand");
+        .transform.Find("mixamorig:RightForeArm").transform.Find("mixamorig:RightHand");*/
     }
 
-    // Estandar de reproduccion
-    void FixedUpdate() 
-    {
-
-        transform.Rotate(0, x * Time.deltaTime * velocidadRotacion, 0);
-        transform.Translate(0, 0, y * Time.deltaTime * velocidadMovimiento);
-        
-    }
     // Update is called once per frame
     void Update()
     {
-        x = Input.GetAxis("Horizontal");
-        y = Input.GetAxis("Vertical");
+        xAxis = Input.GetAxis("Horizontal");
+        yAxis = Input.GetAxis("Vertical");
 
-        anim.SetFloat("VelX", x);
-        anim.SetFloat("VelY", y);
+        anim.SetFloat("VelX", xAxis);
+        anim.SetFloat("VelY", yAxis);
+
+        var camera = Camera.main;
+
+        var forward = camera.transform.forward;
+        var right = camera.transform.right;
+
+        forward.y = 0f;
+        right.y = 0f;
+        forward.Normalize();
+        right.Normalize();
+
+        var desiredMoveDirection = (forward * yAxis + right * xAxis) * (-1); // El movimiento lo esta haciendo en direccion contraria, forward es backwards
+
+        transform.Translate(desiredMoveDirection * velocidadMovimiento * Time.deltaTime);
 
         //Sonidos del personaje al correr
         if(Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.LeftArrow)
@@ -128,10 +134,14 @@ public class LogicaPersonaje : MonoBehaviour
         if(nGranadas > 0){
             nGranadas--;
 
+            var camera = Camera.main;
+
+            var forward = camera.transform.forward;
+            forward.Normalize();
+
             //hand position
-            Vector3 pos = new Vector3(handCoord.position.x,handCoord.position.y,handCoord.position.z);
-            Vector3 v = new Vector3(this.transform.forward.x, angle, this.transform.forward.z);
-            Vector3 force = throwStrength * v;
+            Vector3 pos = new Vector3(handCoord.position.x,handCoord.position.y+1,handCoord.position.z);
+            Vector3 force = throwStrength * forward;
             GameObject g = Instantiate(granada, pos, Quaternion.identity);
             g.GetComponent<Rigidbody>().AddForce(force,ForceMode.Impulse);
         } else {
