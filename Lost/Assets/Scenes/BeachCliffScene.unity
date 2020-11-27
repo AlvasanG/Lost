@@ -13624,6 +13624,11 @@ PrefabInstance:
       propertyPath: fuerzadeSalto
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 1791253494284583689, guid: 02b21b1ca90ec2145a38e4ac267002b7,
+        type: 3}
+      propertyPath: throwStrength
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 1791253495929893201, guid: 02b21b1ca90ec2145a38e4ac267002b7,
         type: 3}
       propertyPath: m_LocalPosition.y

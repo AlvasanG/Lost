@@ -134,10 +134,14 @@ public class LogicaPersonaje : MonoBehaviour
         if(nGranadas > 0){
             nGranadas--;
 
+            var camera = Camera.main;
+
+            var forward = camera.transform.forward;
+            forward.Normalize();
+
             //hand position
             Vector3 pos = new Vector3(handCoord.position.x,handCoord.position.y,handCoord.position.z);
-            Vector3 v = new Vector3(this.transform.forward.x, angle, this.transform.forward.z);
-            Vector3 force = throwStrength * v;
+            Vector3 force = throwStrength * forward;
             GameObject g = Instantiate(granada, pos, Quaternion.identity);
             g.GetComponent<Rigidbody>().AddForce(force,ForceMode.Impulse);
         } else {
