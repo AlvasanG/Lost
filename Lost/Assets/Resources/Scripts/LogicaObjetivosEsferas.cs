@@ -8,9 +8,6 @@ public class LogicaObjetivosEsferas : MonoBehaviour
     public int numeroDeObjetivos; // contabiliad los objetivo
     public TextMeshProUGUI textoMision; // cambiar el texto en el panel
     public GameObject botonDeMision; // se activa cuando la cantidad de objetivos llegue a 0
-    public AudioSource audioSource;
-    public AudioClip audioClipEsferas;
-    public AudioClip audioClipFin;
     
     //public LogicaPersonaje logicaPersonaje; // Referencia al script de logica de nuestro peronaje
 
@@ -37,14 +34,11 @@ public class LogicaObjetivosEsferas : MonoBehaviour
             Destroy(other.transform.parent.gameObject);
             numeroDeObjetivos--; // reducimos el numero de objetos
             textoMision.text = "Obtén las esferas amarillas" + "\n Restantes: " + numeroDeObjetivos;
-            audioSource.PlayOneShot(audioClipEsferas);
             // si no quedan objetivos
             if(numeroDeObjetivos<=0){
                 //logicaPersonaje.nivel++;
                 textoMision.text = "Completaste la misión";
                 botonDeMision.SetActive(true);
-                audioSource.PlayOneShot(audioClipFin);
-
             }
             
         }
