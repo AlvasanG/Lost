@@ -11732,6 +11732,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1665355412}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1672614733 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4562889242613773929, guid: ce222e4219108534080d24f19bb7f3ad,
+    type: 3}
+  m_PrefabInstance: {fileID: 2005620449}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f2f88b5443d200409f249eca661fa2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1674995274 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000012379405242, guid: 7889b3e42b29881408a396ea8303773f,
@@ -13661,6 +13673,16 @@ PrefabInstance:
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 1200850394}
+    - target: {fileID: 4562889242613773929, guid: ce222e4219108534080d24f19bb7f3ad,
+        type: 3}
+      propertyPath: objetivos.Array.data[0]
+      value: 
+      objectReference: {fileID: 7360378092266190743}
+    - target: {fileID: 4562889242613773929, guid: ce222e4219108534080d24f19bb7f3ad,
+        type: 3}
+      propertyPath: objetivos.Array.data[1]
+      value: 
+      objectReference: {fileID: 7360378093192549432}
     - target: {fileID: 4562889242613773930, guid: ce222e4219108534080d24f19bb7f3ad,
         type: 3}
       propertyPath: m_Name
@@ -14956,8 +14978,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3da90b79ebb4144bb2df0918e26beb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  logicaNPC: {fileID: 0}
-  audioSource: {fileID: 0}
+  logicaNPC: {fileID: 1672614733}
+  audioSource: {fileID: 1200850394}
   audioClipEsferas: {fileID: 8300000, guid: 1b13957acf0c36f4682da179dea972a9, type: 3}
   audioClipFin: {fileID: 8300000, guid: 7e6c987efea1cb547accc74b93cc9ed6, type: 3}
 --- !u!33 &7360378092484927042
@@ -15086,8 +15108,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3da90b79ebb4144bb2df0918e26beb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  logicaNPC: {fileID: 0}
-  audioSource: {fileID: 0}
+  logicaNPC: {fileID: 1672614733}
+  audioSource: {fileID: 1200850394}
   audioClipEsferas: {fileID: 8300000, guid: 1b13957acf0c36f4682da179dea972a9, type: 3}
   audioClipFin: {fileID: 8300000, guid: 7e6c987efea1cb547accc74b93cc9ed6, type: 3}
 --- !u!33 &7360378092939564268
@@ -16161,7 +16183,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1672614733}
         m_MethodName: No
         m_Mode: 1
         m_Arguments:
@@ -16562,7 +16584,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1672614733}
         m_MethodName: Si
         m_Mode: 1
         m_Arguments:
