@@ -6,12 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/PrincipalMenu 1.unity
+    path: Assets/Scenes/MenuPrincipal.unity
     guid: e3c6ecf01f939d9409acbf5048fc11f5
   - enabled: 1
     path: Assets/Scenes/BeachCliffScene.unity
     guid: a7a866016eb179b498c291d78d274d36
   - enabled: 1
-    path: Assets/Scenes/FinalMenu.unity
+    path: Assets/Scenes/MenuFinal.unity
     guid: 7d6b466e03a33ed4ba0bbce05ae9e571
   m_configObjects: {}

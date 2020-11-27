@@ -46,9 +46,9 @@ public class LogicaPersonaje : MonoBehaviour
         lanzandoGranada = false;
 
         
-        handCoord = transform.Find("mixamorig:Hips").transform.Find("mixamorig:Spine").transform.Find("mixamorig:Spine1")
+        handCoord = transform.Find("mixamorig:Hips");/*.transform.Find("mixamorig:Spine").transform.Find("mixamorig:Spine1")
         .transform.Find("mixamorig:Spine2").transform.Find("mixamorig:RightShoulder").transform.Find("mixamorig:RightArm")
-        .transform.Find("mixamorig:RightForeArm").transform.Find("mixamorig:RightHand");
+        .transform.Find("mixamorig:RightForeArm").transform.Find("mixamorig:RightHand");*/
     }
 
     // Update is called once per frame
@@ -140,7 +140,7 @@ public class LogicaPersonaje : MonoBehaviour
             forward.Normalize();
 
             //hand position
-            Vector3 pos = new Vector3(handCoord.position.x,handCoord.position.y,handCoord.position.z);
+            Vector3 pos = new Vector3(handCoord.position.x,handCoord.position.y+1,handCoord.position.z);
             Vector3 force = throwStrength * forward;
             GameObject g = Instantiate(granada, pos, Quaternion.identity);
             g.GetComponent<Rigidbody>().AddForce(force,ForceMode.Impulse);
