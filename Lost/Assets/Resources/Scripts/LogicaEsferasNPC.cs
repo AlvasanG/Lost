@@ -34,7 +34,7 @@ public class LogicaEsferasNPC : MonoBehaviour
             audioSource.PlayOneShot(audioClipEsferas);
             if(logicaNPC.numDeObjetivos <= 0)
             {
-                logicaNPC.textoMision.text = "¡Completaste la misión!";
+                logicaNPC.textoMision.text = "¡Completaste la misión, ve a la zona de las trincheras!";
                 logicaNPC.botonDeMision.SetActive(true);
                 audioSource.PlayOneShot(audioClipFin);
                 //logicaPersonaje.transform.position = new Vector3(590.45f,5.577601f,614.01f);
