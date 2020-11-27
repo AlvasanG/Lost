@@ -12,7 +12,7 @@ public class LogicaPersonaje : MonoBehaviour
     public AudioClip paso;
 
     public Animator anim;
-    private float x,y;
+    private float xAxis,yAxis;
 
     public Rigidbody rb;
     public float fuerzadeSalto = 8f;
@@ -51,22 +51,28 @@ public class LogicaPersonaje : MonoBehaviour
         .transform.Find("mixamorig:RightForeArm").transform.Find("mixamorig:RightHand");
     }
 
-    // Estandar de reproduccion
-    void FixedUpdate() 
-    {
-
-        transform.Rotate(0, x * Time.deltaTime * velocidadRotacion, 0);
-        transform.Translate(0, 0, y * Time.deltaTime * velocidadMovimiento);
-        
-    }
     // Update is called once per frame
     void Update()
     {
-        x = Input.GetAxis("Horizontal");
-        y = Input.GetAxis("Vertical");
+        xAxis = Input.GetAxis("Horizontal");
+        yAxis = Input.GetAxis("Vertical");
 
-        anim.SetFloat("VelX", x);
-        anim.SetFloat("VelY", y);
+        anim.SetFloat("VelX", xAxis);
+        anim.SetFloat("VelY", yAxis);
+
+        var camera = Camera.main;
+
+        var forward = camera.transform.forward;
+        var right = camera.transform.right;
+
+        forward.y = 0f;
+        right.y = 0f;
+        forward.Normalize();
+        right.Normalize();
+
+        var desiredMoveDirection = (forward * yAxis + right * xAxis) * (-1); // El movimiento lo esta haciendo en direccion contraria, forward es backwards
+
+        transform.Translate(desiredMoveDirection * velocidadMovimiento * Time.deltaTime);
 
         //Sonidos del personaje al correr
         if(Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.LeftArrow)
