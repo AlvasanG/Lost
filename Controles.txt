@@ -1,0 +1,9 @@
+Jump -> triangulo
+Granada -> cuadrado
+Aceptar -> equis
+Cancelar -> Circulo
+
+Menus:
+
+Opción 1 (Start Game / Main Menu): Click / Equis
+Opción 2 (Exit): Click / Circulo
