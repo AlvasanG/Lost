@@ -41,7 +41,7 @@ public class LogicaNPC : MonoBehaviour
     void Update()
     {
         // Si presionamos X, si aun no hemos aceptado la mision y si no estamos saltando 
-        if(Input.GetKeyDown(KeyCode.X) && aceptarMision == false && jugador.puedoSaltar == true)
+        if(/*Input.GetKeyDown(KeyCode.X) ||*/ Input.GetButtonDown("Fire2") && aceptarMision == false && jugador.puedoSaltar == true && jugadorCerca)
         {
             // Nuestro personaje gire al NPC (para dar mas sensacion de realidad)
             Vector3 posicionJugador = new Vector3(transform.position.x, jugador.gameObject.transform.position.y, transform.position.z);
