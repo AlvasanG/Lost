@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LogicaPies : MonoBehaviour
 {
-    public LogicaPersonaje logicaPersonaje;
+    public PlayerController playerController;
     public AudioClip sonido;
     private AudioSource audio;
     
@@ -15,7 +15,7 @@ public class LogicaPies : MonoBehaviour
         audio = GetComponent<AudioSource>();
     }
 
-// Cuando detecte una mna reproduzca el sonido de una mina accionada
+    // Cuando detecte una mina reproduzca el sonido de una mina accionada
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Mine")){
@@ -24,14 +24,11 @@ public class LogicaPies : MonoBehaviour
     }
     private void OnTriggerStay() 
     {
-        //if(other.tag == "terrain"){
-            logicaPersonaje.puedoSaltar = true; 
-        //}
-           
+        playerController.canIJump = true;     
     }
 
     private void OnTriggerExit() 
     {
-        logicaPersonaje.puedoSaltar = false;    
+        playerController.canIJump = false;    
     }
 }
