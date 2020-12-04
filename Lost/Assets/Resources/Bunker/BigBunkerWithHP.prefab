@@ -222,6 +222,7 @@ GameObject:
   - component: {fileID: 4990199720309148291}
   - component: {fileID: 4990199720304899619}
   - component: {fileID: 4990199719684967789}
+  - component: {fileID: 7459745073379849647}
   m_Layer: 0
   m_Name: BigBunkerWithHP
   m_TagString: Bunker
@@ -300,7 +301,7 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4990199720311140723}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
   m_Convex: 1
@@ -323,6 +324,19 @@ MonoBehaviour:
   numberOfHits: 4
   healthBarUI: {fileID: 4990199719078863620}
   hpBar: {fileID: 4990199720592761525}
+--- !u!65 &7459745073379849647
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4990199720311140723}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.22298822, y: 0.063723825, z: 0.18069534}
+  m_Center: {x: -0.0007059388, y: 0.029844353, z: -0.05034765}
 --- !u!1 &4990199720545487122
 GameObject:
   m_ObjectHideFlags: 0
