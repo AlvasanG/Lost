@@ -5,6 +5,13 @@ public class CameraFacingObject : MonoBehaviour
 {
     public Camera m_Camera;
  
+    void Start()
+    {
+        if(m_Camera == null)
+            m_Camera = Camera.main;
+    }
+
+
     //Orient the camera after all movement is completed this frame to avoid jittering
     void LateUpdate()
     {
