@@ -5,6 +5,7 @@ using System.Collections;
 public class KeyEnter : MonoBehaviour {
 
     public KeyCode key;
+    public string contB;
     Button b;
 
     // Use this for initialization
@@ -13,7 +14,7 @@ public class KeyEnter : MonoBehaviour {
     }
 
     void Update() {
-        if(Input.GetKeyDown(key))
+        if(Input.GetKeyDown(key) || Input.GetButtonDown(contB))
         {
             b.onClick.Invoke();
         }

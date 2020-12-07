@@ -75,10 +75,7 @@ public class LogicaPersonaje : MonoBehaviour
         transform.Translate(desiredMoveDirection * velocidadMovimiento * Time.deltaTime);
 
         //Sonidos del personaje al correr
-        if(Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.LeftArrow)
-         || Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.DownArrow) ||
-         Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.LeftArrow)
-         || Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.DownArrow))       
+        if(xAxis != 0f || yAxis != 0f)       
         {
             sonido.clip = paso;
             sonido.Play();
@@ -88,14 +85,14 @@ public class LogicaPersonaje : MonoBehaviour
             lanzandoGranada = false;
         }
 
-        if(Input.GetKey("e") && !lanzandoGranada){
+        if( (Input.GetKey("e") || Input.GetButtonDown("Fire1")) && !lanzandoGranada){
             timeStamp = Time.time + granadaCD;
             LanzarGranada();
         }
 
         if(puedoSaltar == true) // Si puedo saltar
         {
-            if(Input.GetKeyDown(KeyCode.Space)) // si tecleas
+            if(Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Jump")) // si tecleas
             {
                 anim.SetBool("salto", true);
                 rb.AddForce(new Vector3(0, fuerzadeSalto, 0), ForceMode.Impulse);

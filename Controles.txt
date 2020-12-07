@@ -1,0 +1,4 @@
+Jump -> triangulo
+Granada -> equis
+Aceptar -> circulo
+Cancelar -> cuadrado
