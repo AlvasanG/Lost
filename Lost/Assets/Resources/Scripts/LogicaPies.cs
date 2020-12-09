@@ -13,6 +13,8 @@ public class LogicaPies : MonoBehaviour
     void Start()
     {
         audio = GetComponent<AudioSource>();
+        if(logicaPersonaje == null)
+            logicaPersonaje = transform.parent.gameObject.GetComponent<LogicaPersonaje>();  
     }
 
 // Cuando detecte una mna reproduzca el sonido de una mina accionada

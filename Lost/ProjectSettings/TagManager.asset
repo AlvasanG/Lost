@@ -14,6 +14,10 @@ TagManager:
   - GrenadeLauncher
   - NPC
   - Menu
+  - HUD
+  - text_MainDialogue
+  - text_Granadas
+  - panel_Buttons
   layers:
   - Default
   - TransparentFX

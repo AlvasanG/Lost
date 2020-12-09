@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LogicaEsferasNPC : MonoBehaviour
 {
@@ -8,18 +9,13 @@ public class LogicaEsferasNPC : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip audioClipEsferas;
     public AudioClip audioClipFin;
-    //public LogicaPersonaje logicaPersonaje;
+    
+    private LogicaPersonaje jugador;
 
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        jugador = GameObject.FindGameObjectWithTag("Player").GetComponent<LogicaPersonaje>();
     }
 
     void OnTriggerEnter(Collider other)
@@ -29,19 +25,16 @@ public class LogicaEsferasNPC : MonoBehaviour
         {
             //restamos
             logicaNPC.numDeObjetivos--;
-            logicaNPC.textoMision.text = "Obtén las esferas amarillas" + 
-            "\n Restantes: " + logicaNPC.numDeObjetivos;
+            jugador.GetTextMainDialogue().GetComponent<Text>().text = "Recoge los objetivos mas adelante";
+            jugador.GetTextMainDialogue().GetComponent<Text>().text += "\nRestantes: " + logicaNPC.numDeObjetivos;
             audioSource.PlayOneShot(audioClipEsferas);
             if(logicaNPC.numDeObjetivos <= 0)
             {
-                logicaNPC.textoMision.text = "¡Completaste la misión, ve a la zona de las trincheras!";
-                logicaNPC.botonDeMision.SetActive(true);
                 audioSource.PlayOneShot(audioClipFin);
-                //logicaPersonaje.transform.position = new Vector3(590.45f,5.577601f,614.01f);
-
             }
             //desactivamos el objeto padre por si queremos seguir utilizandolo en otras misiones
             transform.parent.gameObject.SetActive(false);
         }
     }
+
 }

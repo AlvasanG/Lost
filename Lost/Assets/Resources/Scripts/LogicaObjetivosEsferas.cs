@@ -11,6 +11,8 @@ public class LogicaObjetivosEsferas : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip audioClipEsferas;
     public AudioClip audioClipFin;
+
+    private LogicaPersonaje jugador;
     
     //public LogicaPersonaje logicaPersonaje; // Referencia al script de logica de nuestro peronaje
 
@@ -20,6 +22,7 @@ public class LogicaObjetivosEsferas : MonoBehaviour
         // en un inicio busque los objetivos // length los cuentas
         numeroDeObjetivos = GameObject.FindGameObjectsWithTag("objetivo").Length;
         textoMision.text = "Obtén las esferas amarillas" + "\n Restantes: " + numeroDeObjetivos;
+        jugador = GameObject.FindGameObjectWithTag("Player").GetComponent<LogicaPersonaje>();
         //panel.SetActive(true);
     }
 
@@ -36,17 +39,29 @@ public class LogicaObjetivosEsferas : MonoBehaviour
             // Destruye al padre del objetivo
             Destroy(other.transform.parent.gameObject);
             numeroDeObjetivos--; // reducimos el numero de objetos
-            textoMision.text = "Obtén las esferas amarillas" + "\n Restantes: " + numeroDeObjetivos;
+            jugador.GetTextMainDialogue().GetComponent<Text>().text = "Recoge los objetivos mas adelante";
+            jugador.GetTextMainDialogue().GetComponent<Text>().text += "\nRestantes: " + numeroDeObjetivos;
             audioSource.PlayOneShot(audioClipEsferas);
             // si no quedan objetivos
             if(numeroDeObjetivos<=0){
-                //logicaPersonaje.nivel++;
-                textoMision.text = "Completaste la misión";
-                botonDeMision.SetActive(true);
                 audioSource.PlayOneShot(audioClipFin);
-
+                StartCoroutine(MissionComplete());
             }
             
         }
+    }
+
+    IEnumerator MissionComplete()
+    {
+        jugador.GetTextMainDialogue().GetComponent<Text>().text = "Mision completada. Avanza hacia la zona de trincheras.";
+        //Print the time of when the function is first called.
+        Debug.Log("Started Coroutine at timestamp : " + Time.time);
+
+        //yield on a new YieldInstruction that waits for 5 seconds.
+        yield return new WaitForSeconds(5);
+
+        //After we have waited 5 seconds print the time again.
+        Debug.Log("Finished Coroutine at timestamp : " + Time.time);
+        jugador.GetTextMainDialogue().GetComponent<Text>().text = "";
     }
 }

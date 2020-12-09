@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class LogicaPersonaje : MonoBehaviour
 {
@@ -30,8 +32,17 @@ public class LogicaPersonaje : MonoBehaviour
     private float timeStamp;
     private Transform handCoord;
 
+  
+    public float angle = 0.3f; 
+    
+    
+    [Header("Elementos HUD")]
+    private GameObject playerHUD;
+    private GameObject t_mainDialogue;
+    private GameObject t_granadas;
+    private GameObject p_buttons;
 
-    public float angle = 0.3f;
+
 
     //public int nivel;
 
@@ -45,6 +56,13 @@ public class LogicaPersonaje : MonoBehaviour
         sonido = GetComponent<AudioSource>();
         lanzandoGranada = false;
 
+        playerHUD = GameObject.FindWithTag("HUD");
+        if(playerHUD != null)
+        {
+            t_mainDialogue = GameObject.FindWithTag("text_MainDialogue");
+            t_granadas = GameObject.FindWithTag("text_Granadas");
+            p_buttons = GameObject.FindWithTag("panel_Buttons");
+        }
         
         handCoord = transform.Find("mixamorig:Hips");/*.transform.Find("mixamorig:Spine").transform.Find("mixamorig:Spine1")
         .transform.Find("mixamorig:Spine2").transform.Find("mixamorig:RightShoulder").transform.Find("mixamorig:RightArm")
@@ -54,6 +72,8 @@ public class LogicaPersonaje : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        UpdateGranadaText();
+
         xAxis = Input.GetAxis("Horizontal");
         yAxis = Input.GetAxis("Vertical");
 
@@ -141,8 +161,32 @@ public class LogicaPersonaje : MonoBehaviour
             Vector3 force = throwStrength * forward;
             GameObject g = Instantiate(granada, pos, Quaternion.identity);
             g.GetComponent<Rigidbody>().AddForce(force,ForceMode.Impulse);
-        } else {
-            //Debug.Log("No tenemos granadas");
+        } 
+    }
+
+    private void UpdateGranadaText()
+    {
+        t_granadas.GetComponent<Text>().text = "Granadas: " + nGranadas;
+        if(nGranadas > 0)
+            t_granadas.GetComponent<Text>().color = Color.black;
+        else {
+            t_granadas.GetComponent<Text>().color = Color.red;
         }
+    }
+
+    // Setter / Getter
+    public GameObject GetTextMainDialogue()
+    {
+        return t_mainDialogue;
+    }
+
+    public GameObject GetButtonPanel()
+    {
+        return p_buttons;
+    }
+
+    public void EmptyText()
+    {
+        t_mainDialogue.GetComponent<Text>().text = "";
     }
 }
