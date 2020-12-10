@@ -10,10 +10,10 @@ public class Disparo : MonoBehaviour
     private GameObject player;
     private Transform playerTrans;
 
-    public int damp = 2;
-    public GameObject projectile;
-    public float speed = 20f;
-    public float temp = 3.0f;
+    public int damp = 1;
+    public GameObject bullet;
+    public float speed = 500f;
+    public float temp = 1.5f;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +28,7 @@ public class Disparo : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(playerTrans.position - transform.position), 
                                               damp * Time.deltaTime);
 
+
         if (temp > 0)
         {
             temp -= Time.deltaTime;
@@ -35,23 +36,18 @@ public class Disparo : MonoBehaviour
         else
         {
             if (Vector3.Distance(playerTrans.position, transform.position) < 30)
-            {
-                print("BANG!!");
-
-                GameObject instantiatedProjectile = Instantiate(projectile, transform.position, transform.rotation);
-
-                instantiatedProjectile.velocity = transform.TransformDirection(0, 0, speed);
-
-                Physics.IgnoreCollision(instantiatedProjectile.GetComponent<Collider>(), transform.root.GetComponent<Collider>());
-                temp = 3.0f;
+            {                
+                createAndShoot();
+                temp = 1.5f;
             }   
         }
     }
 
-    private GameObject createAndShoot()
+    private void createAndShoot()
     {
-        GameObject bullet = Instantiate(projectile, transform.position, transform.rotation);
-        bullet.GetComponent<Rigidbody>().AddForce(transform.forward * speed);
+        GameObject b = Instantiate(bullet, transform.position, transform.rotation);
+        b.GetComponent<Rigidbody>().AddForce(transform.forward * speed);
+        b.transform.Rotate(90f, 0f, 0f, Space.Self);
     }
 }
 

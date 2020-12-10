@@ -12,6 +12,12 @@ public class Perseguidor : MonoBehaviour
     private GameObject player;
     private Transform playerTrans;
 
+    [Header("Hit")]
+    public float hitDamage;
+    private float hitCD = 2f;
+    private float timeStamp;
+    public float hitDistance;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,20 +27,23 @@ public class Perseguidor : MonoBehaviour
 
     void Update()
     {
-
         if (player != null)
         {
-
-            if (Vector3.Distance(playerTrans.position, transform.position) < 50)
+            print(Vector3.Distance(playerTrans.position, transform.position));
+            if (Vector3.Distance(playerTrans.position, transform.position) < hitDistance)
+            {
+                if(timeStamp <= Time.time)
+                {
+                    player.GetComponent<LogicaPersonaje>().RecieveDamage(hitDamage);
+                    timeStamp = Time.time + hitCD;
+                }
+            }
+            else if (Vector3.Distance(playerTrans.position, transform.position) < 50)
             {
                 Quaternion rotation = Quaternion.LookRotation(playerTrans.position - transform.position);
 
                 transform.rotation = Quaternion.Slerp(transform.rotation, rotation, damp * Time.deltaTime);
                 transform.Translate(0, 0, velocidadePerseguidor * Time.deltaTime);
-            }
-            else if (Vector3.Distance(playerTrans.position, transform.position) < 5)
-            {
-                print("Hit da playa");
             }
         }
     }
