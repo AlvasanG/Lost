@@ -6,13 +6,13 @@ public class LogicaPies : MonoBehaviour
 {
     public LogicaPersonaje logicaPersonaje;
     public AudioClip sonido;
-    private AudioSource audio;
+    private AudioSource audioS;
     
 
     // Start is called before the first frame update
     void Start()
     {
-        audio = GetComponent<AudioSource>();
+        audioS = GetComponent<AudioSource>();
         if(logicaPersonaje == null)
             logicaPersonaje = transform.parent.gameObject.GetComponent<LogicaPersonaje>();  
     }
@@ -21,7 +21,7 @@ public class LogicaPies : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Mine")){
-            audio.PlayOneShot(sonido, 1);
+            audioS.PlayOneShot(sonido, 1);
         }
     }
     private void OnTriggerStay() 

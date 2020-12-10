@@ -5,7 +5,7 @@ public class FinishLevelTrench : MonoBehaviour
 {
 
     public GameObject[] bunkersStanding;
-    private BoxCollider collider;
+    private BoxCollider col;
     private MainMenu menuBehaviour;
 
     // Start is called before the first frame update
@@ -13,8 +13,8 @@ public class FinishLevelTrench : MonoBehaviour
     {
         bunkersStanding = GameObject.FindGameObjectsWithTag("Bunker");
         menuBehaviour = GameObject.FindWithTag("Menu").GetComponent<MainMenu>();
-        collider = GetComponent<BoxCollider>();
-        collider.isTrigger = false;
+        col = GetComponent<BoxCollider>();
+        col.isTrigger = false;
     }
 
     // Update is called once per frame
@@ -22,7 +22,7 @@ public class FinishLevelTrench : MonoBehaviour
     {
         bunkersStanding = GameObject.FindGameObjectsWithTag("Bunker");
         if(bunkersStanding.Length == 0){
-            collider.isTrigger = true;
+            col.isTrigger = true;
         }
     }
 

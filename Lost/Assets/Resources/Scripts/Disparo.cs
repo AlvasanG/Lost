@@ -6,23 +6,28 @@ public class Disparo : MonoBehaviour
 {
 
 
-    public Transform Player;
-    public int damp = 2;
-    public Rigidbody projectile;
-    public float speed = 20f;
-    public float temp = 3.0f;
+    [Header("Jugador")]
+    private GameObject player;
+    private Transform playerTrans;
+
+    public int damp = 1;
+    public GameObject bullet;
+    public float speed = 500f;
+    public float temp = 1.5f;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        player = GameObject.FindWithTag("Player");
+        playerTrans = player.transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Player.position - transform.position), 
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(playerTrans.position - transform.position), 
                                               damp * Time.deltaTime);
+
 
         if (temp > 0)
         {
@@ -30,16 +35,19 @@ public class Disparo : MonoBehaviour
         }
         else
         {
-            if (Vector3.Distance(Player.position, transform.position) < 30)
-            {
-                Rigidbody instantiatedProjectile = Instantiate(projectile, transform.position, transform.rotation);
-
-                instantiatedProjectile.velocity = transform.TransformDirection(0, 0, speed);
-
-                Physics.IgnoreCollision(instantiatedProjectile.GetComponent<Collider>(), transform.root.GetComponent<Collider>());
-                temp = 3.0f;
+            if (Vector3.Distance(playerTrans.position, transform.position) < 30)
+            {                
+                createAndShoot();
+                temp = 1.5f;
             }   
         }
+    }
+
+    private void createAndShoot()
+    {
+        GameObject b = Instantiate(bullet, transform.position, transform.rotation);
+        b.GetComponent<Rigidbody>().AddForce(transform.forward * speed);
+        b.transform.Rotate(90f, 0f, 0f, Space.Self);
     }
 }
 

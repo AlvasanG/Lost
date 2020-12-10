@@ -7,7 +7,7 @@ public class GrenadeScript : MonoBehaviour
 
     public GameObject explosionEffect;
     public float delay = 8f; //Time for the grenade to explode if left unattended
-    private AudioSource audio;
+    private AudioSource audioS;
     public AudioClip clip;
 
     private float timeStamp;
@@ -15,7 +15,7 @@ public class GrenadeScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        audio = GetComponent<AudioSource>();
+        audioS = GetComponent<AudioSource>();
         timeStamp = Time.time + delay;
     }
 
@@ -28,7 +28,7 @@ public class GrenadeScript : MonoBehaviour
 
     public void Explode(){
         GameObject clone = Instantiate(explosionEffect, transform.position, transform.rotation);
-        audio.PlayOneShot(clip,1);
+        audioS.PlayOneShot(clip,1);
         ParticleSystem.MainModule particle = clone.GetComponent<ParticleSystem>().main;
         Destroy(clone, particle.duration);
         Destroy(gameObject);
