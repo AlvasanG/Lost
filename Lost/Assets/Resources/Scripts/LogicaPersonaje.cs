@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class LogicaPersonaje : MonoBehaviour
 {
-    public float velocidadMovimiento = 5.0f;
-    public float velocidadRotacion = 200.0f;
-
     private AudioSource sonido;
     public AudioClip saltar;
     public AudioClip paso;
@@ -17,22 +15,26 @@ public class LogicaPersonaje : MonoBehaviour
     private float xAxis,yAxis;
 
     public Rigidbody rb;
+
+    [Header("Movimiento")]
+    
+    public float velocidadMovimiento = 5.0f;
+    public float velocidadRotacion = 200.0f;
     public float fuerzadeSalto = 8f;
     public bool puedoSaltar;
-
     public float velocidadInicial; // guarda la v de movimiento
     public float velocidadAgachado;
+    private bool inverse;
 
+    [Header("Granadas")]
     public int nGranadas;
     private bool lanzandoGranada;
     public float granadaCD = 2f;
     public GameObject granada;
     public float throwStrength;
-
     private float timeStamp;
     private Transform handCoord;
-
-  
+ 
     public float angle = 0.3f; 
     
     
@@ -41,6 +43,12 @@ public class LogicaPersonaje : MonoBehaviour
     private GameObject t_mainDialogue;
     private GameObject t_granadas;
     private GameObject p_buttons;
+    private GameObject s_health;
+    private Slider hpBar;
+
+    [Header("Vida")]
+    private float health;
+    public float maxHealth;
 
 
 
@@ -49,12 +57,18 @@ public class LogicaPersonaje : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(transform.rotation.y == 1)
+            inverse = true;
+        else
+            inverse = false;
+
         puedoSaltar = false;
         anim = GetComponent<Animator>();
         velocidadInicial = velocidadMovimiento;
         velocidadAgachado = velocidadMovimiento * 0.5f;
         sonido = GetComponent<AudioSource>();
         lanzandoGranada = false;
+        health = maxHealth;
 
         playerHUD = GameObject.FindWithTag("HUD");
         if(playerHUD != null)
@@ -62,8 +76,15 @@ public class LogicaPersonaje : MonoBehaviour
             t_mainDialogue = GameObject.FindWithTag("text_MainDialogue");
             t_granadas = GameObject.FindWithTag("text_Granadas");
             p_buttons = GameObject.FindWithTag("panel_Buttons");
+            s_health = GameObject.FindWithTag("slider_HP");
+            if(s_health != null)
+            {
+                hpBar = s_health.GetComponent<Slider>();
+                hpBar.value = CalculateHealth();
+            }
         }
         
+
         handCoord = transform.Find("mixamorig:Hips");/*.transform.Find("mixamorig:Spine").transform.Find("mixamorig:Spine1")
         .transform.Find("mixamorig:Spine2").transform.Find("mixamorig:RightShoulder").transform.Find("mixamorig:RightArm")
         .transform.Find("mixamorig:RightForeArm").transform.Find("mixamorig:RightHand");*/
@@ -73,6 +94,7 @@ public class LogicaPersonaje : MonoBehaviour
     void Update()
     {
         UpdateGranadaText();
+        UpdateHealth();
 
         xAxis = Input.GetAxis("Horizontal");
         yAxis = Input.GetAxis("Vertical");
@@ -90,7 +112,9 @@ public class LogicaPersonaje : MonoBehaviour
         forward.Normalize();
         right.Normalize();
 
-        var desiredMoveDirection = (forward * yAxis + right * xAxis) * (-1); // El movimiento lo esta haciendo en direccion contraria, forward es backwards
+        var desiredMoveDirection = (forward * yAxis + right * xAxis);
+
+        desiredMoveDirection = inverse ? desiredMoveDirection * (-1) : desiredMoveDirection;
 
         transform.Translate(desiredMoveDirection * velocidadMovimiento * Time.deltaTime);
 
@@ -172,6 +196,32 @@ public class LogicaPersonaje : MonoBehaviour
         else {
             t_granadas.GetComponent<Text>().color = Color.red;
         }
+    }
+
+    private float CalculateHealth()
+    {
+        return health/maxHealth;
+    }
+
+    private void UpdateHealth()
+    {
+        hpBar.value = CalculateHealth();
+
+        if(health <= 0)
+        {
+            SceneManager.LoadScene("MenuFinal"); //Deberia ser pantalla de gameover
+        }
+
+        if(health > maxHealth)
+        {
+            health = maxHealth;
+        }
+
+    }
+
+    public void RecieveDamage(float damage)
+    {
+        health -= damage;
     }
 
     // Setter / Getter

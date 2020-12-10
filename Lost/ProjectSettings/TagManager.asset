@@ -18,6 +18,8 @@ TagManager:
   - text_MainDialogue
   - text_Granadas
   - panel_Buttons
+  - CoinTag
+  - slider_HP
   layers:
   - Default
   - TransparentFX

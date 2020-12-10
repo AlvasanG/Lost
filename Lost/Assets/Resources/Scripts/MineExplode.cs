@@ -15,7 +15,10 @@ namespace ObjectCode
         public float explosionForce = 10f;
         public float explosionDepth = 3f; // Altura del terreno debajo de la mina despues de que estalle (la playa es altura 5)
 
+        public float mineDamage = 10f;
+
         private ObjectCode.TerrainFormer tFormer;
+
 
         private void Start() {
             tFormer = mine.AddComponent<ObjectCode.TerrainFormer>();
@@ -37,6 +40,7 @@ namespace ObjectCode
                 Rigidbody rig = col.GetComponent<Rigidbody>();
                 if(rig != null){
                     // Realizar cualquier accion contra el jugador (col)
+                    col.gameObject.GetComponent<LogicaPersonaje>().RecieveDamage(mineDamage);
                     tFormer.SetDesiredHeight(explosionDepth);
                 }
             }

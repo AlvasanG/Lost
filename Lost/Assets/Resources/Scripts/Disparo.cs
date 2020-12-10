@@ -6,22 +6,26 @@ public class Disparo : MonoBehaviour
 {
 
 
-    public Transform Player;
+    [Header("Jugador")]
+    private GameObject player;
+    private Transform playerTrans;
+
     public int damp = 2;
-    public Rigidbody projectile;
+    public GameObject projectile;
     public float speed = 20f;
     public float temp = 3.0f;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        player = GameObject.FindWithTag("Player");
+        playerTrans = player.transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(Player.position - transform.position), 
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(playerTrans.position - transform.position), 
                                               damp * Time.deltaTime);
 
         if (temp > 0)
@@ -30,9 +34,11 @@ public class Disparo : MonoBehaviour
         }
         else
         {
-            if (Vector3.Distance(Player.position, transform.position) < 30)
+            if (Vector3.Distance(playerTrans.position, transform.position) < 30)
             {
-                Rigidbody instantiatedProjectile = Instantiate(projectile, transform.position, transform.rotation);
+                print("BANG!!");
+
+                GameObject instantiatedProjectile = Instantiate(projectile, transform.position, transform.rotation);
 
                 instantiatedProjectile.velocity = transform.TransformDirection(0, 0, speed);
 
@@ -40,6 +46,12 @@ public class Disparo : MonoBehaviour
                 temp = 3.0f;
             }   
         }
+    }
+
+    private GameObject createAndShoot()
+    {
+        GameObject bullet = Instantiate(projectile, transform.position, transform.rotation);
+        bullet.GetComponent<Rigidbody>().AddForce(transform.forward * speed);
     }
 }
 
