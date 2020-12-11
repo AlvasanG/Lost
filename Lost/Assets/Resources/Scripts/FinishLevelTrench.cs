@@ -28,7 +28,7 @@ public class FinishLevelTrench : MonoBehaviour
 
     void OnTriggerEnter (Collider other){
         if(other.tag == "Player"){
-            menuBehaviour.EscenaJuego("MenuFinal");
+            menuBehaviour.EscenaJuego("Bosque");
         }
     }
 }
