@@ -5,7 +5,7 @@ using UnityEngine;
 public class Perseguidor : MonoBehaviour
 {
 
-    public float velocidadePerseguidor = 5f;
+    public float velocidadePerseguidor = 10f;
     public int damp = 2;
 
     [Header("Jugador")]
@@ -13,16 +13,17 @@ public class Perseguidor : MonoBehaviour
     private Transform playerTrans;
 
     [Header("Hit")]
-    public float hitDamage;
+    public float hitDamage = 10f;
     private float hitCD = 2f;
     private float timeStamp;
-    public float hitDistance;
+    public float hitDistance = 5f;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindWithTag("Player");
         playerTrans = player.transform;
+        
     }
 
     void Update()
