@@ -682,7 +682,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df22e128f60dbe242acda2a382b36109, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidadePerseguidor: 15
+  velocidadePerseguidor: 7
   damp: 2
   hitDamage: 10
   hitDistance: 2
@@ -754,8 +754,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 733919243}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.7200012, y: 1.74, z: 11.678}
-  m_LocalScale: {x: 0.40269, y: 1.1329, z: 1}
+  m_LocalPosition: {x: 1.98, y: 1.357, z: 7.34}
+  m_LocalScale: {x: 1.519752, y: 0.7985724, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
@@ -831,7 +831,7 @@ TerrainCollider:
   m_Material: {fileID: 0}
   m_Enabled: 1
   m_TerrainData: {fileID: 15600000, guid: aa00e02dff47cb141a9770870888756b, type: 2}
-  m_EnableTreeColliders: 1
+  m_EnableTreeColliders: 0
 --- !u!218 &1332030610
 Terrain:
   m_ObjectHideFlags: 0
@@ -928,6 +928,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2410758632570081974, guid: a8ddd0162deed90418eb465049d533c0,
+        type: 3}
+      propertyPath: rotationSpeed
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2410758632570081975, guid: a8ddd0162deed90418eb465049d533c0,
         type: 3}
@@ -1229,17 +1234,17 @@ PrefabInstance:
     - target: {fileID: 3609056130480233662, guid: 02b21b1ca90ec2145a38e4ac267002b7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.72
+      value: 2.07
       objectReference: {fileID: 0}
     - target: {fileID: 3609056130480233662, guid: 02b21b1ca90ec2145a38e4ac267002b7,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3609056130480233662, guid: 02b21b1ca90ec2145a38e4ac267002b7,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.49
+      value: 16.55
       objectReference: {fileID: 0}
     - target: {fileID: 3609056130480233662, guid: 02b21b1ca90ec2145a38e4ac267002b7,
         type: 3}
@@ -1284,7 +1289,7 @@ PrefabInstance:
     - target: {fileID: 3863886241756142981, guid: 02b21b1ca90ec2145a38e4ac267002b7,
         type: 3}
       propertyPath: velocidadMovimiento
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4133778622077470212, guid: 02b21b1ca90ec2145a38e4ac267002b7,
         type: 3}

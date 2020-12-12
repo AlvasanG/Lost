@@ -17,10 +17,5 @@ public class ProjectileHitPlayer : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        if(other.tag == "terrain" || other.tag == "cover")
-        {
-            Destroy(gameObject);
-        }
     }
 }
