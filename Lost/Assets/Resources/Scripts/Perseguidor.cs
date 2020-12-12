@@ -18,16 +18,26 @@ public class Perseguidor : MonoBehaviour
     private float timeStamp;
     public float hitDistance;
 
+    private bool hasPlayerMoved = false;
+    private Vector2 startPosition;
+
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindWithTag("Player");
         playerTrans = player.transform;
+        startPosition = new Vector2(playerTrans.position.x, playerTrans.position.z);
     }
 
     void Update()
     {
-        if (player != null)
+        Vector2 pN = new Vector2(playerTrans.position.x, playerTrans.position.z);
+        if(pN != startPosition)
+        {
+            hasPlayerMoved = true;
+        }
+
+        if (player != null && hasPlayerMoved)
         {
             var t = new Vector3(playerTrans.position.x, playerTrans.position.y + 1, playerTrans.position.z);
             if (Vector3.Distance(playerTrans.position, transform.position) < hitDistance)
