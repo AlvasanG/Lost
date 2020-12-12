@@ -209,7 +209,7 @@ public class LogicaPersonaje : MonoBehaviour
 
         if(health <= 0)
         {
-            SceneManager.LoadScene("MenuFinal"); //Deberia ser pantalla de gameover
+            SceneManager.LoadScene("GameOver"); //Deberia ser pantalla de gameover
         }
 
         if(health > maxHealth)
