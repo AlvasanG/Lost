@@ -30,7 +30,8 @@ public class Perseguidor : MonoBehaviour
     {
         if (player != null)
         {
-            print(Vector3.Distance(playerTrans.position, transform.position));
+            var temp = new Vector3(playerTrans.position.x, playerTrans.position.y + 1, playerTrans.position.z);
+
             if (Vector3.Distance(playerTrans.position, transform.position) < hitDistance)
             {
                 if(timeStamp <= Time.time)
@@ -41,7 +42,7 @@ public class Perseguidor : MonoBehaviour
             }
             else if (Vector3.Distance(playerTrans.position, transform.position) < 50)
             {
-                Quaternion rotation = Quaternion.LookRotation(playerTrans.position - transform.position);
+                Quaternion rotation = Quaternion.LookRotation(temp - transform.position);
 
                 transform.rotation = Quaternion.Slerp(transform.rotation, rotation, damp * Time.deltaTime);
                 transform.Translate(0, 0, velocidadePerseguidor * Time.deltaTime);

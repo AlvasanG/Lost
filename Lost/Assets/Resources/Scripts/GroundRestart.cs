@@ -7,6 +7,6 @@ public class GroundRestart : MonoBehaviour
 {
     private void OnTriggerEnter()
     {
-        SceneManager.LoadScene("BeachCliffScene");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

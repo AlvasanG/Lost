@@ -20,6 +20,7 @@ TagManager:
   - panel_Buttons
   - CoinTag
   - slider_HP
+  - cover
   layers:
   - Default
   - TransparentFX

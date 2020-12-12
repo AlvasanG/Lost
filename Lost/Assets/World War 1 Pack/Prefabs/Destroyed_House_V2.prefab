@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 3390500}
   - component: {fileID: 2334130}
   - component: {fileID: 6453170}
+  - component: {fileID: 6332876298688509113}
+  - component: {fileID: 5663988079135826798}
   m_Layer: 0
   m_Name: Destroyed_House_V2
   m_TagString: Untagged
@@ -94,3 +96,29 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 00af4a863ab97414d9627bd5d7e303b4, type: 3}
+--- !u!65 &6332876298688509113
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119966}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.11205484, y: 0.10735055, z: 0.044571158}
+  m_Center: {x: 0.013971176, y: -0.0101289945, z: 0.019755956}
+--- !u!65 &5663988079135826798
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119966}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.057868373, y: 0.0524379, z: 0.08996031}
+  m_Center: {x: 0.041064363, y: -0.037585367, z: 0.042450465}

@@ -10,24 +10,29 @@ public class Disparo : MonoBehaviour
     private GameObject player;
     private Transform playerTrans;
 
-    public int damp = 1;
+    private int damp = 1;
     public GameObject bullet;
-    public float speed = 500f;
-    public float temp = 1.5f;
+    private float speed = 650f;
+    private float temp = 1.5f;
+
+    private float maxMagSize = 15;
+    private float magSize;
+    private float shootDistance = 70;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindWithTag("Player");
         playerTrans = player.transform;
+        magSize = maxMagSize;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(playerTrans.position - transform.position), 
+        var t = new Vector3(playerTrans.position.x, playerTrans.position.y + 1, playerTrans.position.z);
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(t - transform.position), 
                                               damp * Time.deltaTime);
-
 
         if (temp > 0)
         {
@@ -35,10 +40,19 @@ public class Disparo : MonoBehaviour
         }
         else
         {
-            if (Vector3.Distance(playerTrans.position, transform.position) < 30)
-            {                
-                createAndShoot();
-                temp = 1.5f;
+            if (Vector3.Distance(playerTrans.position, transform.position) < shootDistance)
+            {        
+
+                if(magSize > 0)
+                {
+                    createAndShoot();
+                    temp = 1.5f;
+                }
+                else
+                {
+                    magSize = maxMagSize;
+                    temp = 3f; //Esta recargando durante 3 segundos
+                }
             }   
         }
     }
@@ -46,8 +60,9 @@ public class Disparo : MonoBehaviour
     private void createAndShoot()
     {
         GameObject b = Instantiate(bullet, transform.position, transform.rotation);
-        b.GetComponent<Rigidbody>().AddForce(transform.forward * speed);
+        b.GetComponent<Rigidbody>().AddForce(transform.forward * (speed * (Random.value + 1)));
         b.transform.Rotate(90f, 0f, 0f, Space.Self);
+        magSize -= 1;
     }
 }
 
