@@ -18,7 +18,7 @@ public class LogicaPersonaje : MonoBehaviour
 
     [Header("Movimiento")]
     
-    public float velocidadMovimiento = 5.0f;
+    public float velocidadMovimiento = 8f;
     public float velocidadRotacion = 200.0f;
     public float fuerzadeSalto = 8f;
     public bool puedoSaltar;
@@ -209,7 +209,7 @@ public class LogicaPersonaje : MonoBehaviour
 
         if(health <= 0)
         {
-            SceneManager.LoadScene("MenuFinal"); //Deberia ser pantalla de gameover
+            SceneManager.LoadScene("GameOver");
         }
 
         if(health > maxHealth)

@@ -10,14 +10,13 @@ public class Disparo : MonoBehaviour
     private GameObject player;
     private Transform playerTrans;
 
-    private int damp = 1;
+    public int damp = 1;
     public GameObject bullet;
-    private float speed = 650f;
-    private float temp = 1.5f;
+    public float speed = 500f;
+    public float temp = 1.5f;
 
-    private float maxMagSize = 15;
+    private float maxMagSize = 15f;
     private float magSize;
-    private float shootDistance = 70;
 
     // Start is called before the first frame update
     void Start()
@@ -34,25 +33,25 @@ public class Disparo : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(t - transform.position), 
                                               damp * Time.deltaTime);
 
+
         if (temp > 0)
         {
             temp -= Time.deltaTime;
         }
         else
         {
-            if (Vector3.Distance(playerTrans.position, transform.position) < shootDistance)
-            {        
-
+            if (Vector3.Distance(playerTrans.position, transform.position) < 70)
+            {      
                 if(magSize > 0)
                 {
                     createAndShoot();
                     temp = 1.5f;
-                }
+                } 
                 else
                 {
                     magSize = maxMagSize;
-                    temp = 3f; //Esta recargando durante 3 segundos
-                }
+                    temp = 3f;
+                }       
             }   
         }
     }
@@ -60,7 +59,7 @@ public class Disparo : MonoBehaviour
     private void createAndShoot()
     {
         GameObject b = Instantiate(bullet, transform.position, transform.rotation);
-        b.GetComponent<Rigidbody>().AddForce(transform.forward * (speed * (Random.value + 1)));
+        b.GetComponent<Rigidbody>().AddForce(transform.forward * speed);
         b.transform.Rotate(90f, 0f, 0f, Space.Self);
         magSize -= 1;
     }

@@ -15,7 +15,7 @@ public class FinishForrestLevel : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            menuBehaviour.EscenaJuego("Iglesia");
+            menuBehaviour.EscenaJuego("iglesia");
         }
     }
 }

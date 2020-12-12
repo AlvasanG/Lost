@@ -1772,7 +1772,7 @@ TerrainCollider:
   m_Material: {fileID: 13400000, guid: 43901269cc77a8743b6722722aab0b80, type: 2}
   m_Enabled: 1
   m_TerrainData: {fileID: 15600000, guid: 9e591053de09f4e498d2c0ca6de49a05, type: 2}
-  m_EnableTreeColliders: 1
+  m_EnableTreeColliders: 0
 --- !u!218 &264905025
 Terrain:
   m_ObjectHideFlags: 0
@@ -11740,7 +11740,7 @@ PrefabInstance:
     - target: {fileID: 651326841174819961, guid: ce222e4219108534080d24f19bb7f3ad,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 493.36
+      value: 471.8
       objectReference: {fileID: 0}
     - target: {fileID: 651326841174819961, guid: ce222e4219108534080d24f19bb7f3ad,
         type: 3}
@@ -11750,7 +11750,7 @@ PrefabInstance:
     - target: {fileID: 651326841174819961, guid: ce222e4219108534080d24f19bb7f3ad,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 811.13
+      value: 808.2
       objectReference: {fileID: 0}
     - target: {fileID: 651326841174819961, guid: ce222e4219108534080d24f19bb7f3ad,
         type: 3}
@@ -12804,7 +12804,7 @@ PrefabInstance:
     - target: {fileID: 3609056130480233662, guid: 02b21b1ca90ec2145a38e4ac267002b7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 493.5
+      value: 471.9
       objectReference: {fileID: 0}
     - target: {fileID: 3609056130480233662, guid: 02b21b1ca90ec2145a38e4ac267002b7,
         type: 3}
@@ -12814,7 +12814,7 @@ PrefabInstance:
     - target: {fileID: 3609056130480233662, guid: 02b21b1ca90ec2145a38e4ac267002b7,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 815.8
+      value: 834.8
       objectReference: {fileID: 0}
     - target: {fileID: 3609056130480233662, guid: 02b21b1ca90ec2145a38e4ac267002b7,
         type: 3}
@@ -12859,7 +12859,12 @@ PrefabInstance:
     - target: {fileID: 3863886241756142981, guid: 02b21b1ca90ec2145a38e4ac267002b7,
         type: 3}
       propertyPath: velocidadMovimiento
-      value: 15
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3863886241756142981, guid: 02b21b1ca90ec2145a38e4ac267002b7,
+        type: 3}
+      propertyPath: granadaCD
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4133778622077470212, guid: 02b21b1ca90ec2145a38e4ac267002b7,
         type: 3}
